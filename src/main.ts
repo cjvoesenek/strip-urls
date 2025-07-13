@@ -1,5 +1,7 @@
-import { stripUrl } from "./lib/strip";
 import "./main.css";
+import { version } from "../package.json";
+
+import { stripUrl } from "./lib/strip";
 
 const original = document.getElementById("original") as HTMLTextAreaElement;
 const cleaned = document.getElementById("cleaned") as HTMLTextAreaElement;
@@ -17,6 +19,8 @@ addSelectAllListener(cleaned);
 addClearListener();
 addGoListener();
 addCopyListener();
+
+setVersionString();
 
 function addUrlChangeListener(): void {
   original.addEventListener("input", () => {
@@ -64,4 +68,12 @@ function addCopyListener(): void {
         console.error(`Failed to write URL to clipboard: ${error}`),
       );
   });
+}
+
+function setVersionString(): void {
+  // Set version string in label.
+  const versionLabel = document.querySelector(
+    "#version-label > a",
+  ) as HTMLAnchorElement;
+  versionLabel.textContent = version;
 }

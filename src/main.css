@@ -32,3 +32,14 @@ main textarea {
 #copied.visible {
   opacity: 1;
 }
+
+#version-label {
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+
+#version-label > a {
+  color: #aaa;
+  text-decoration: none;
+}
