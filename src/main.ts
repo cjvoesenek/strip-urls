@@ -5,6 +5,7 @@ const original = document.getElementById("original") as HTMLTextAreaElement;
 const cleaned = document.getElementById("cleaned") as HTMLTextAreaElement;
 
 const clearButton = document.getElementById("clear") as HTMLButtonElement;
+const goButton = document.getElementById("go") as HTMLButtonElement;
 const copyButton = document.getElementById("copy") as HTMLButtonElement;
 const copiedText = document.getElementById("copied") as HTMLSpanElement;
 
@@ -14,6 +15,7 @@ addSelectAllListener(original);
 addSelectAllListener(cleaned);
 
 addClearListener();
+addGoListener();
 addCopyListener();
 
 function addUrlChangeListener(): void {
@@ -35,6 +37,12 @@ function addClearListener(): void {
   clearButton.addEventListener("click", () => {
     original.value = "";
     cleaned.value = "";
+  });
+}
+
+function addGoListener(): void {
+  goButton.addEventListener("click", () => {
+    window.open(cleaned.value);
   });
 }
 
